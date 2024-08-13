@@ -3,9 +3,37 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Rock Paper Scissors</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="script.js" defer></script>
 </head>
 <body>
-    <script src="script.js" defer></script>
+    <h1 class="header">Rock Paper Scissors</h1>
+
+    <div class="game-container">
+        <div class="score-board">
+            <p class="score-bubble">Human Score: <span id="human-score">0</span></p>
+            <p class="score-bubble">Computer Score: <span id="computer-score">0</span></p>
+        </div>
+        
+        <div class="choices">
+            <button class="choice-btn" data-choice="rock">Rock</button>
+            <button class="choice-btn" data-choice="paper">Paper</button>
+            <button class="choice-btn" data-choice="scissors">Scissors</button>
+        </div>
+        
+        <div class="result">
+            <p id="result-message">Make your choice!</p>
+        </div>
+
+        <div class="restart">
+            <button class="restart-btn">Restart Game</button>
+        </div>
+    </div>
+
+    <div class="rounds">Round <span id="round">1</span></div>
+
+
+    
 </body>
 </html>

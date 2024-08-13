@@ -1,95 +1,100 @@
+
 console.log("hello everyone");
 
 let humanScore = 0;
 let computerScore = 0;
-
-
+let currentRound = 1;
 
 function getComputerChoice() {
-
     const options = ["rock", "paper", "scissors"];
-
     const randomInt = Math.floor(Math.random() * options.length);
-
     const selectedOption = options[randomInt];
-
     return selectedOption;
-    
 }
 
-function getHumanChoice() {
-
-    let humanOption = prompt("Rock, paper or scissors?");
-
-    const options = ["rock", "paper", "scissors"];
-
-    if (options.includes(humanOption.toLowerCase())) {
-        return humanOption;
-    } else {
-        return getComputerChoice();
-
-    }
-
+// update UI
+function updateUI() {
+    document.getElementById("human-score").textContent = humanScore;
+    document.getElementById("computer-score").textContent = computerScore;
 }
 
+//update rounds
+function updateRound() {
+    document.getElementById("round").textContent = currentRound;
+}
 
-
-function playRound(computerChoice, humanChoice) {
-
-    humanChoice = humanChoice.toLowerCase();
-
+function getResult(computerChoice, humanChoice) {
     if (computerChoice === humanChoice) {
-        return `It's a tie! Human score: ${humanScore} Computer score: ${computerScore}`;
+        return "It's a tie!";
     } 
-
     if (
         (computerChoice === "scissors" && humanChoice == "paper") ||
         (computerChoice === "paper" && humanChoice == "rock") ||
         (computerChoice === "rock" && humanChoice == "scissors")
         ) {
-
             computerScore++;
-            return `You lose! ${computerChoice} beats ${humanChoice}. Human score: ${humanScore} Computer score: ${computerScore}`;
+            return `You lose! ${computerChoice} beats ${humanChoice}`;
         }
-
         else {
             humanScore++;
-            return `You win! ${humanChoice} beats ${computerChoice}. Human score: ${humanScore} Computer score: ${computerScore}`;
+            return `You win! ${humanChoice} beats ${computerChoice}.`;
         }
 }
 
 
-    
 
+// button click handling
+function handleButtonClick(event) {
+    const humanChoice = event.target.dataset.choice;
+    const computerChoice = getComputerChoice();
+    resultMessage = getResult(computerChoice, humanChoice);
 
+    document.getElementById("result-message").textContent = resultMessage; 
+    updateUI();
 
-function playGame() {
+    document.getElementById("round").textContent = currentRound;
+    currentRound++;
+    updateRound();
 
-    computerScore = 0;
-    humanScore = 0;
-
-    for (let i=0; i<5; i++ ) {
-        const computerChoice = getComputerChoice();
-        const humanChoice = getHumanChoice();
-        const roundResult = playRound(computerChoice, humanChoice);
-        console.log(roundResult);
+    if (currentRound == 6) {
+        if (humanScore == computerScore) {
+            alert("Game over! It's a tie!");
+        }
+        else if (humanScore > computerScore) {
+            alert("Game over!! You win!")
+        }
+        else 
+            alert("Game over!! You lose!")
         
-
+        handleRestartClick();
     }
-
-    if (computerScore === humanScore) {
-        return "It's a tie!";
-    }
-
-    else if (computerScore > humanScore) {
-        return `The computer wins with ${computerScore} points`;
-    }
-
-    else {
-        return `You win with ${humanScore} points!`
-    }
-    
-
-    
 
 }
+
+// restart game
+function handleRestartClick() {
+    humanScore = 0;
+    computerScore = 0;
+    document.getElementById('result-message').textContent = "Make your choice!";
+    updateUI();
+    currentRound = 1;
+    updateRound();
+}
+
+// set up even listeners
+function setupEventListeners() {
+    const choiceButtons = document.querySelectorAll(".choice-btn");
+    choiceButtons.forEach(button => {
+        button.addEventListener("click", handleButtonClick);
+    })
+
+
+    const restartButton = document.querySelector(".restart-btn");
+    restartButton.addEventListener("click", handleRestartClick);
+}
+
+
+// Initialise the game
+
+setupEventListeners()
+

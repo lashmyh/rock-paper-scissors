@@ -1,0 +1,87 @@
+@import url('https://fonts.googleapis.com/css2?family=Matemasie&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
+
+body {
+    margin: 0;
+    font-family: Roboto, sans-serif;
+    background-color: #e7a0a8;
+    text-align: center;
+    
+}
+
+.header {
+    font-family: Matemasie, sans-serif;
+    color: #2a191b;
+    padding-top: 30px;
+    font-size: 45px;
+}
+
+.game-container {
+    background-color: rgb(242, 213, 224);
+    margin: 50px 50px;
+    padding: 30px 20px;
+    border-radius: 20px;
+}
+
+.score-board {
+    display: flex;
+    justify-content: space-around;
+    color: white;
+    margin-bottom: 30px;
+}
+
+.score-bubble {
+    padding: 10px 20px;
+    background-color: #7d5257;
+    border-radius: 14px;
+}
+
+.choices {
+    margin-bottom: 50px;
+}
+
+.choice-btn {
+    
+    background-color: rgb(255, 255, 255);
+    padding: 20px 20px;
+    margin: 5px 10px;
+    border-radius: 14px;
+    color: #2a191b;
+    font-size: 20px;
+}
+
+.choice-btn:hover {
+    background-color: #e7a0a8;
+    color: white;
+}
+
+.choice-btn:active {
+    background-color: #2a191b;
+}
+
+.result {
+    color: #2a191b;
+    padding-bottom: 30px;
+    
+}
+
+.restart-btn {
+   background-color: #7d5257;
+   color: white;
+   padding: 10px 20px;
+   border-radius: 14px;
+   font-size: 14px;
+   
+}
+
+.restart-btn:hover {
+    background-color: #2a191b;
+}
+
+.rounds {
+    background-color: #2a191b;
+    color: white;
+    padding: 20px 10px;
+    margin: 0px 50px;
+    border-radius: 20px;
+    font-size: 30px;
+}
